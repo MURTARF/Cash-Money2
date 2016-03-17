@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    
+    <script language="javascript">
+			var money = 0;
+			var persec = 0;
+			
+			var hourly = prompt("How much do you earn an hour?", "9");
+			
+			persec = ((hourly/60)/60)
+			
+	// function required for timer
+		function countDown(tick)
+		{
+		
+			var time = "Transfer in ";
+			var minute = Math.floor(tick);
+
+			if (minute < 10)
+			{
+				time += "0";
+			}
+			time += minute + ":";
+			var second = tick ;
+			if (second < 10)
+			{
+				time += "0";
+			}
+
+			time += second;
+			window.status = time;
+			++tick;
+
+			var command = "countDown(" + tick + ")";
+			
+			;
+			
+			money = second * persec;
+			money = money.toFixed(3);
+			//document.getElementById("timer").innerHTML ="You have "+ minute+ " minutes "+ second + " seconds left.";
+			//document.getElementById("timer").innerHTML = second + " seconds left." + money;	
+			document.getElementById("timer").innerHTML = "$" + money;	
+			window.setTimeout(command,1000);
+		}
+    
+  </script>
+	<body onLoad="window.setTimeout('countDown(+-0)',1000);">
+        <div class="app">
+            <h1>Cash Money Money</h1>
+
+                <h3> Cash Earned: &nbsp; <span id="timer"></span></h3>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
